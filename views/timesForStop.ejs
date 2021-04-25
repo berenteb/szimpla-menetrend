@@ -1,0 +1,24 @@
+<h2><%= data.stop.stop_name %> megálló indulási idejei a mai napra:</h2>
+<div class="column">
+    <% if(data.fields.length === 0){ %> 
+        <h2>Nincs információ</h2>
+    <% }else{ %> 
+        <table class="departures">
+        <% data.fields.forEach((field)=>{ %> 
+                <tr onclick="location.href='/times-for-direction/<%=field.trip.trip_id.replace(`/`, `-`)%>/<%= data.stop.stop_id %> '">
+                    <td>
+                        <div class="route-field" style="background-color: #<%=field.route.route_color%>; color: #<%=field.route.route_text_color%>;">
+                            <h2><%=field.route.route_short_name %></h2>
+                        </div>
+                    </td>
+                    <td>
+                        <h2><%=field.trip.trip_headsign %></h2>
+                    </td>
+                    <td>
+                        <h2><%= field.time.departure_time.split(":")[0] %>:<%= field.time.departure_time.split(":")[1] %> </h2>
+                    </td>
+                </tr>
+        <% }); %> 
+        </table>
+    <% } %> 
+</div>

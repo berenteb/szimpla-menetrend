@@ -1,0 +1,14 @@
+<h2>Megállók:</h2>
+<div class="column">
+    <% if(data.stops.length === 0){ %> 
+        <h2>Nincs információ</h2>
+    <% }else{ %> 
+        <% data.stops.forEach((stop)=>{ %> 
+            <a href="/stop/<%=stop.stop_id%>">
+            <div class="stop-field animation1">
+                <h2><%=stop.stop_name %></h2>
+            </div>
+            </a>
+        <% }); %> 
+    <% } %> 
+</div>

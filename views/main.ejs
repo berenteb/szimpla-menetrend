@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
+    <title>Szimpla Menetrend</title>
+</head>
+<body>
+    <div class="title-bar">
+        <a href="/"><h1 class="logo">Szimpla Menetrend</h1></a>
+        <nav class="normal-menu">
+            <a href="/">Főoldal</a>
+            <a href="/stops">Megállók</a>
+            <a href="/">Közeli</a>
+        </nav>
+        <button class="hamburger-button" onclick="toggleHamburgerMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <line x1="4" y1="6" x2="20" y2="6" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="18" x2="20" y2="18" />
+              </svg>
+        </button>
+    </div>
+    <nav class="hamburger-menu" id="hamburger-menu">
+        <a href="/">Főoldal</a>
+        <a href="/stops">Megállók</a>
+        <a href="/">Közeli</a>
+    </nav>
+    <div class="content">
+        <%- include(view, {data:data});%> 
+    </div>
+    <footer>
+        <p>&copy; 2021. Berente Bálint</p>
+    </footer>
+</body>
+</html>

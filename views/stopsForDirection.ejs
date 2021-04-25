@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="route-field" style="background-color: #<%=route.route_color%>; color: #<%=route.route_text_color%>;">
+        <h2><%=data.route.route_short_name %></h2>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <line x1="13" y1="18" x2="19" y2="12" />
+        <line x1="13" y1="6" x2="19" y2="12" />
+      </svg>
+    <h2><%= data.trip.trip_headsign %> </h2>
+</div>
+<h2>Megállók: </h2>
+<div class="column">
+    <% if(data.stops.length === 0){ %> 
+        <h2>Nincs információ</h2>
+    <% }else{ %> 
+        <% data.stops.forEach((stop)=>{ %> 
+            <a href="/times-for-direction/<%= data.trip_id%>/<%=stop[0].stop_id%>">
+                <div class="stop-field animation1">
+                    <h3><%=stop[0].stop_name %></h3>
+                </div>
+            </a>
+        <% }); %> 
+    <% } %> 
+</div>

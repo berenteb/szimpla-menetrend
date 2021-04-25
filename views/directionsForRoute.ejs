@@ -1,0 +1,19 @@
+<div class="row">
+    <h2>Útirányok:</h2>
+    <div class="route-field" style="background-color: #<%=route.route_color%>; color: #<%=route.route_text_color%>;">
+        <h2><%=data.route.route_short_name %></h2>
+    </div>
+</div>
+<div class="column">
+    <% if(data.directions.length === 0){ %> 
+        <h2>Nincs információ</h2>
+    <% }else{ %> 
+        <% data.directions.forEach((direction)=>{ %> 
+            <a href="/stops-for-direction/<%=direction.trip_id.replace("/", "-")%>">
+            <div class="stop-field animation1">
+                <h2><%=direction.trip_headsign %></h2>
+            </div>
+            </a>
+        <% }); %> 
+    <% } %> 
+</div>

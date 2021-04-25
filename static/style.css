@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root{
+    --primary-color: #009eb3;
+    --secondary-color: #00606d;
+    --dark-color: #004355;
+    --font-color: white;
+    --background-color: #e6f2f7;
+    --red: rgb(190, 0, 0);
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--dark-color);
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3, p{
+    margin: 10px;
+}
+
+h2{
+    text-align: center;
+}
+
+hr{
+    border: 1px solid var(--primary-color);
+    width: 100%;
+    border-radius: 10px;
+}
+
+.icon{
+    stroke: var(--dark-color);
+    margin: 0 10px;
+}
+.icon-tabler-alert-octagon{
+    stroke: var(--red);
+}
+/* Animations */
+.animation1{
+    transition: transform 0.1s;
+}
+.animation1:hover{
+    transform: scale(1.05);
+}
+/* Title Bar */
+.title-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 100px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+/* Navigation */
+
+nav{
+    display: flex;
+    align-items: center;
+    color: var(--background-color);
+}
+
+nav > a{
+    font-size: 25px;
+}
+
+nav.hamburger-menu{
+    display: none;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    transition: display .2s;
+}
+
+button.hamburger-button{
+    display: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+button.hamburger-button > svg{
+    stroke: var(--background-color);
+    margin: 0;
+}
+
+nav > a, button.hamburger-button{
+    border: 2px solid var(--secondary-color);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    transition: border-color 0.2s;
+}
+
+nav > a:hover, button.hamburger-button:hover{
+    border-color: var(--background-color);
+}
+
+/* Content */
+.content{
+    min-height: calc(100vh - 100px - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content > *{
+    max-width: 90%;
+    margin: 20px;
+}
+
+.card{
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.column{
+    display: block;
+}
+
+.column > *, .grid > * {
+    margin: 10px;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.route-field{
+    min-width: 60px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stop-field{
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    border-radius: 200px;
+    text-align: center;
+    padding: 5px;
+    /* border-bottom: 2px solid var(--secondary-color); */
+}
+
+/* Table */
+table{
+    border-collapse: collapse;
+}
+table.timetable tr:nth-of-type(even){
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+}
+table.timetable td:first-child{
+    background-color: var(--dark-color);
+    color: var(--background-color);
+    font-weight: bold;
+}
+table.timetable td{
+    margin: 0;
+    padding: 10px;
+    font-size: large;
+}
+table.timetable td.next-time{
+    border: 3px solid var(--red);
+}
+
+table.departures tr{
+    cursor: pointer;
+}
+
+table.departures td{
+    padding: 10px 0;
+}
+
+/* Footer */
+footer{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--background-color)
+}
+
+@media screen and (max-width: 770px){
+    nav.normal-menu{
+        display: none;
+    }
+    button.hamburger-button{
+        display: flex;
+    }
+}
