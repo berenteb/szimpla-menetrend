@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root{
-    --primary-color: #009eb3;
-    --secondary-color: #00606d;
-    --dark-color: #004355;
+    --primary-color: #2978b5;
+    --secondary-color: #7aa5c3;
+    --dark-color: #004577;
     --font-color: white;
     --background-color: #e6f2f7;
     --red: rgb(190, 0, 0);
@@ -27,6 +27,10 @@ a.external{
 
 h1, h2, h3, p{
     margin: 10px;
+}
+
+h1{
+    font: optional;
 }
 
 h2{
@@ -212,5 +216,11 @@ footer{
     }
     button.hamburger-button{
         display: flex;
+    }
+}
+
+@media screen and (max-width: 440px){
+    h1{
+        font-size: 25px;
     }
 }
