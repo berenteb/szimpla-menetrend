@@ -15,6 +15,7 @@ const getTimetableForDirectionMW = require("./mw/getTimetableForDirectionMW");
 const getServiceIDsMW = require("./mw/getServiceIDsMW");
 const renderMW = require("./mw/renderMW");
 const redirectMW = require("./mw/redirectMW");
+const getFeedMW = require("./mw/getFeedMW");
 
 module.exports = function (app) {
     app.get(
@@ -59,6 +60,7 @@ module.exports = function (app) {
         "/",
         getAgenciesMW(),
         getRoutesMW(),
+        getFeedMW(),
         renderMW("routes")
     );
     app.get(

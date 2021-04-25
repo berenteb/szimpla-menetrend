@@ -21,6 +21,10 @@ a{
     color: inherit;
 }
 
+a.external{
+    text-decoration: underline;
+}
+
 h1, h2, h3, p{
     margin: 10px;
 }
@@ -76,7 +80,6 @@ nav.hamburger-menu{
     display: none;
     flex-direction: column;
     background-color: var(--primary-color);
-    transition: display .2s;
 }
 
 button.hamburger-button{
