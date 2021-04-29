@@ -13,7 +13,7 @@
         <nav class="normal-menu">
             <a href="/">Főoldal</a>
             <a href="/stops">Megállók</a>
-            <a href="/">Közeli</a>
+            <a onclick="getLocation()">Közeli</a>
         </nav>
         <button class="hamburger-button" onclick="toggleHamburgerMenu()">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -27,7 +27,7 @@
     <nav class="hamburger-menu" id="hamburger-menu">
         <a href="/">Főoldal</a>
         <a href="/stops">Megállók</a>
-        <a href="/">Közeli</a>
+        <a onclick="getLocation()">Közeli</a>
     </nav>
     <div class="content">
         <%- include(view, {data:data});%> 

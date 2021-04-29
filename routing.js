@@ -4,6 +4,7 @@ const getRouteMW = require("./mw/getRouteMW");
 const getStopMW = require("./mw/getStopMW");
 const getStopsMW = require("./mw/getStopsMW");
 const getAgenciesMW = require("./mw/getAgenciesMW");
+const getNearestStopMW = require("./mw/getNearestStopMW");
 const getTripsForDirectionMW = require("./mw/getTripsForDirectionMW");
 const getTripsForServiceMW = require("./mw/getTripsForServiceMW");
 const getDirectionsForRouteMW = require("./mw/getDirectionsForRouteMW");
@@ -18,6 +19,11 @@ const redirectMW = require("./mw/redirectMW");
 const getFeedMW = require("./mw/getFeedMW");
 
 module.exports = function (app) {
+    app.get(
+        "/nearest-stop",
+        getStopsMW(),
+        getNearestStopMW()
+    );
     app.get(
         "/stop/:stop_id",
         getStopMW(),

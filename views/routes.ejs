@@ -15,7 +15,7 @@
 <h2>Társasági közlemények</h2>
 <% if(Array.isArray(data.feed)){ %>
     <% data.feed.forEach(post=>{ %> 
-        <div>
+        <div class="card">
             <h3><%= post.title %> </h3>
             <p><%= post.text %> </p>
             <a class="external" href="<%=post.link %> ">További információk</a>
@@ -29,7 +29,7 @@
 <% if(data.agencies.length> 0){ %>
     <div class="column">
         <% data.agencies.forEach(agency=>{ %>
-            <div class="column card">
+            <div class="card align-center">
                 <h3>
                     <%= agency.agency_name %>
                 </h3>

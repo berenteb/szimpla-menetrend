@@ -1,14 +1,23 @@
+<script src="/search.js"></script>
 <h2>Megállók:</h2>
 <div class="column">
     <% if(data.stops.length === 0){ %> 
         <h2>Nincs információ</h2>
-    <% }else{ %> 
-        <% data.stops.forEach((stop)=>{ %> 
-            <a href="/stop/<%=stop.stop_id%>">
-            <div class="stop-field animation1">
-                <h2><%=stop.stop_name %></h2>
-            </div>
-            </a>
-        <% }); %> 
+    <% }else{ %>
+        <div class="flex-column">
+            <input id="search-bar" type="text" placeholder="Keresés..." oninput="searchStops()">
+        </div>
+        <div id="stop-list">
+            <% data.stops.forEach((stop)=>{ %> 
+                <a class="stop-link" href="/stop/<%=stop.stop_id%>">
+                <div class="stop-field animation1">
+                    <h2><%=stop.stop_name %></h2>
+                </div>
+                </a>
+            <% }); %> 
+        </div>
+        <div id="stop-search-results">
+
+        </div>
     <% } %> 
 </div>

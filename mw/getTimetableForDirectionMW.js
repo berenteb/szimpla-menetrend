@@ -5,6 +5,7 @@ module.exports = function () {
             let timetable = [];
             let date = new Date();
             let nextFound = false;
+            let nextText = "Ma nem indul több járat";
             for (let i = 0; i < times.length; i++) {
                 var time = times[i].departure_time.split(":");
                 let found = false;
@@ -12,6 +13,7 @@ module.exports = function () {
                 if (!nextFound && (date.getHours() === parseInt(time[0]) && date.getMinutes() <= parseInt(time[1]) || date.getHours() < parseInt(time[0]))) {
                     next = true;
                     nextFound = true;
+                    nextText = `A következő járat ekkor indul: ${time[0]}:${time[1]}`;
                 }
                 for (let j = 0; j < timetable.length; j++) {
                     if (time[0] === timetable[j].hour) {
@@ -33,8 +35,9 @@ module.exports = function () {
                 }
             }
             if (!nextFound && times.length > 0) {
-                timetable[0].minutes[0].next = true;
+                // timetable[0].minutes[0].next = true;
             }
+            res.locals.nextText = nextText;
             res.locals.timetable = timetable || [];
             // console.log(timetable);
             next();

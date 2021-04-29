@@ -7,11 +7,11 @@ module.exports = function () {
             } else {
                 res.locals.feed = feed;
             }
-            console.log(feed);
+            // console.log(feed);
             next();
         }).catch(err => {
             res.locals.feed = err;
-            console.log(err);
+            // console.log(err);
             next();
         });
     }

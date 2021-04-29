@@ -1,11 +1,15 @@
+<script src="/filterDepartures.js"></script>
 <h2><%= data.stop.stop_name %> megálló indulási idejei a mai napra:</h2>
 <div class="column">
     <% if(data.fields.length === 0){ %> 
         <h2>Nincs információ</h2>
     <% }else{ %> 
+        <div class="flex-column">
+            <button id="filter-button" class="content-button">Régiek megjelenítése</button>
+        </div>
         <table class="departures">
         <% data.fields.forEach((field)=>{ %> 
-                <tr onclick="location.href='/times-for-direction/<%=field.trip.trip_id.replace(`/`, `-`)%>/<%= data.stop.stop_id %> '">
+                <tr <% if(field.timeline_position === "past-departure"){%>hidden="true"<% } %>   class="<%= field.timeline_position %>" onclick="location.href='/times-for-direction/<%=field.trip.trip_id.replace(`/`, `-`)%>/<%= data.stop.stop_id %> '">
                     <td>
                         <div class="route-field" style="background-color: #<%=field.route.route_color%>; color: #<%=field.route.route_text_color%>;">
                             <h2><%=field.route.route_short_name %></h2>

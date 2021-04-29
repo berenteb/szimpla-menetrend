@@ -8,7 +8,7 @@
         <line x1="13" y1="18" x2="19" y2="12" />
         <line x1="13" y1="6" x2="19" y2="12" />
       </svg>
-    <h2><%= data.trip.trip_headsign %> </h2>
+    <h2><%= data.trip.trip_headsign || "Útirány #"+(data.trip.direction_id+1)   %> </h2>
 </div>
 <h2>Megállók: </h2>
 <div class="column">
