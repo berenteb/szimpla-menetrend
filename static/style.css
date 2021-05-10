@@ -127,7 +127,7 @@ nav > a:hover, button.hamburger-button:hover{
 
 .content > *{
     max-width: 90%;
-    margin: 20px;
+    margin: 20px 0;
 }
 
 .card{
@@ -177,9 +177,6 @@ nav > a:hover, button.hamburger-button:hover{
     justify-content: center;
 }
 
-.column > * > * {
-    margin: 20px;
-}
 
 .row{
     display: flex;
@@ -203,6 +200,7 @@ nav > a:hover, button.hamburger-button:hover{
 .stop-field{
     border-radius: 200px;
     text-align: center;
+    margin: 20px;
     padding: 5px;
     box-shadow: var(--shadow);
 }
@@ -263,6 +261,10 @@ div.flex-column{
 }
 
 /* Table */
+.table-container{
+    width: 100%;
+    overflow-x: auto;
+}
 table{
     border-collapse: collapse;
 }
