@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.6",
+    "dotenv": "^9.0.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "gtfs": "^2.4.3"

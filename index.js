@@ -2,8 +2,9 @@ const express = require('express');
 const https = require("https");
 const gtfs = require('./gtfs');
 const fs = require('fs');
-const key = fs.readFileSync('./certs/key.pem');
-const cert = fs.readFileSync('./certs/cert.pem');
+require("dotenv").config();
+const key = fs.readFileSync(process.env.KEY_PATH);
+const cert = fs.readFileSync(process.env.CERT_PATH);
 const app = express();
 const port = 3000;
 
@@ -20,6 +21,6 @@ app.use((err,req,res,next)=>{
 })
 
 const server = https.createServer({ key: key, cert: cert }, app);
-server.listen(port, () => {
-    console.log("Server listening on " + port);
+server.listen(process.env.PORT, () => {
+    console.log("Server listening on " + process.env.PORT);
 });

@@ -299,7 +299,7 @@ tr.next-departure{
 /* Map */
 div#map{
     width: 90vw;
-    height: 80vh;
+    height: 70vh;
     border-radius: 25px;
 }
 
