@@ -1,5 +1,6 @@
 const express = require('express');
 const https = require("https");
+const http = require("http");
 const gtfs = require('./gtfs');
 const fs = require('fs');
 require("dotenv").config();
@@ -19,8 +20,13 @@ require('./routing')(app);
 app.use((err,req,res,next)=>{
     res.render("main", { view: 'error', data: err});
 })
-
-const server = https.createServer({ key: key, cert: cert }, app);
+var server;
+if (process.env.SSL === true) {
+    console.log("SSL")
+    server = https.createServer({ key: key, cert: cert }, app);
+} else {
+    server = http.createServer(app);
+}
 server.listen(process.env.PORT, () => {
-    console.log("Server listening on " + process.env.PORT);
+    console.log(process.env.SSL === true?"HTTPS":"HTTP" + " Server listening on " + process.env.PORT);
 });
