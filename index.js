@@ -4,8 +4,6 @@ const http = require("http");
 const gtfs = require('./gtfs');
 const fs = require('fs');
 require("dotenv").config();
-const key = fs.readFileSync(process.env.KEY_PATH);
-const cert = fs.readFileSync(process.env.CERT_PATH);
 const app = express();
 const port = 3000;
 
@@ -22,7 +20,8 @@ app.use((err,req,res,next)=>{
 })
 var server;
 if (process.env.SSL === true) {
-    console.log("SSL")
+    const key = fs.readFileSync(process.env.KEY_PATH);
+    const cert = fs.readFileSync(process.env.CERT_PATH);
     server = https.createServer({ key: key, cert: cert }, app);
 } else {
     server = http.createServer(app);
