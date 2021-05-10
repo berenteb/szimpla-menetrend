@@ -13,7 +13,8 @@ function initMap(callback) {
         mapTypeControl: false,
         scaleControl: true,
         rotateControl: true,
-        fullscreenControl: false
+        fullscreenControl: false,
+        gestureHandling: "greedy"
     });
     infoWindow = new google.maps.InfoWindow();
     svgMarker = {
