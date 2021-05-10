@@ -1,3 +1,4 @@
+const { getShapes } = require("gtfs");
 const gtfs = require("gtfs");
 const config = require("./config.json");
 async function loadDB() {
@@ -57,7 +58,7 @@ async function getStopsForTrip(trip_id) {
         let stop = await gtfs.getStops({
             "stop_id": item.stop_id
         })
-        stops.push(stop);
+        stops.push(stop[0]);
     }
     return stops;
 }
@@ -119,6 +120,13 @@ async function getActiveServiceIDs() {
     }
     return ids;
 }
+
+async function getShapeForShapeID(shape_id) {
+    let shapes = await gtfs.getShapes({
+        "shape_id": shape_id
+    },[],[["shape_pt_sequence", "ASC"]]);
+    return shapes;
+}
 module.exports = {
     loadDB: loadDB,
     getAgency: getAgency,
@@ -130,5 +138,6 @@ module.exports = {
     getTimesForDirection: getTimesForDirection,
     getTripsForDirection: getTripsForDirection,
     isActiveToday: isActiveToday,
-    getActiveServiceIDs: getActiveServiceIDs
+    getActiveServiceIDs: getActiveServiceIDs,
+    getShapeForShapeID: getShapeForShapeID
 }

@@ -13,7 +13,7 @@
 <% if(data.timetable.length > 0){ %>
     <h2><%= data.nextText %> </h2>
 <% } %> 
-<h2><a href="/stop/<%= data.stop.stop_id %> "><%= data.stop.stop_name %></a> megálló indulási idejei a mai napra:</h2>
+<h2><a href="/stop/<%= data.stop.stop_id %> "><%= data.stop.stop_name %> <% if(stop.unique !== 0){ %><span class="stop-unique"><%= stop.unique %></span><% } %></a> megálló indulási idejei a mai napra:</h2>
 <div class="column">
     <% if(data.timetable.length === 0){ %> 
         <h2>Nincs információ</h2>

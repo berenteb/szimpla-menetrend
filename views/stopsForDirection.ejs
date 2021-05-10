@@ -10,15 +10,16 @@
       </svg>
     <h2><%= data.trip.trip_headsign || "Útirány #"+(data.trip.direction_id+1)   %> </h2>
 </div>
-<h2>Megállók: </h2>
+<h2>Megállók</h2>
+<button class="content-button animation1" onclick="location.href='/trip-map/<%= data.trip.trip_id.replace('/', '-')%>'">Megtekintés a térképen</button>
 <div class="column">
     <% if(data.stops.length === 0){ %> 
         <h2>Nincs információ</h2>
     <% }else{ %> 
         <% data.stops.forEach((stop)=>{ %> 
-            <a href="/times-for-direction/<%= data.trip_id%>/<%=stop[0].stop_id%>">
+            <a href="/times-for-direction/<%= data.trip_id%>/<%=stop.stop_id%>">
                 <div class="stop-field animation1">
-                    <h3><%=stop[0].stop_name %></h3>
+                    <h3><%=stop.stop_name %> <% if(stop.unique !== 0){ %><span class="stop-unique"><%= stop.unique %></span><% } %></h3>
                 </div>
             </a>
         <% }); %> 

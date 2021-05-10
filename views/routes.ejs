@@ -16,9 +16,19 @@
 <% if(Array.isArray(data.feed)){ %>
     <% data.feed.forEach(post=>{ %> 
         <div class="card">
-            <h3><%= post.title %> </h3>
-            <p><%= post.text %> </p>
-            <a class="external" href="<%=post.link %> ">További információk</a>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="12" cy="12" r="9" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                    <polyline points="11 12 12 12 12 16 13 16" />
+                  </svg>
+            </div>
+            <div>
+                <h3><%= post.title %> </h3>
+                <p><%= post.text %> </p>
+                <a target="_blank" class="external" href="<%=post.link %> ">További információk</a>
+            </div>
         </div>
     <% }); %> 
 <% }else{ %> 
@@ -29,7 +39,7 @@
 <% if(data.agencies.length> 0){ %>
     <div class="column">
         <% data.agencies.forEach(agency=>{ %>
-            <div class="card align-center">
+            <div class="agency-card align-center">
                 <h3>
                     <%= agency.agency_name %>
                 </h3>

@@ -5,11 +5,11 @@
     --secondary-color: #7aa5c3;
     --dark-color: #004577;
     --font-color: white;
-    --background-color: #d3f3ff;
+    --background-color: #e3edf5;
     --red: rgb(190, 0, 0);
-    --shadow: 8px 8px 16px #bedbe6, -8px -8px 16px #e8ffff;
+    --shadow: 8px 8px 16px #c8d1d8, -8px -8px 16px #feffff;
     --shadow-menu:  8px 8px 16px #23669a, -8px -8px 16px #2f8ad0;
-    --shadow-input: inset 8px 8px 16px #b3cfd9, inset -8px -8px 16px #f3ffff;
+    --shadow-input: inset 8px 8px 16px #c8d1d8, inset -8px -8px 16px #feffff;
 }
 
 body{
@@ -27,6 +27,7 @@ a{
 
 a.external{
     text-decoration: underline;
+    margin: 10px;
 }
 
 h1, h2, h3, p{
@@ -39,6 +40,13 @@ h1{
 
 h2{
     text-align: center;
+}
+
+button{
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
 }
 
 hr{
@@ -77,11 +85,8 @@ hr{
 nav{
     display: flex;
     align-items: center;
-    color: var(--background-color);
-}
-
-nav > a{
     font-size: 25px;
+    color: var(--background-color);
 }
 
 nav.hamburger-menu{
@@ -92,10 +97,6 @@ nav.hamburger-menu{
 
 button.hamburger-button{
     display: none;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
 }
 
 button.hamburger-button > svg{
@@ -110,7 +111,6 @@ nav > a, button.hamburger-button{
     margin: 10px;
     transition: transform 0.1s;
     box-shadow: var(--shadow-menu);
-    
 }
 
 nav > a:hover, button.hamburger-button:hover{
@@ -131,11 +131,39 @@ nav > a:hover, button.hamburger-button:hover{
 }
 
 .card{
+    display: flex;
+    animation: appear;
+    animation-duration: 1s;
+    transition-property: all;
+}
+
+@keyframes appear {
+    from{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.card svg{
+    height: 50px;
+    width: 50px;
+}
+
+.card > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.agency-card, .card{
     border-radius: 20px;
     padding: 20px;
     margin: 20px;
     border-radius: 50px;
-    background: #d3f3ff;
+    background: var(--background-color);
     box-shadow: var(--shadow);
 }
 
@@ -149,11 +177,7 @@ nav > a:hover, button.hamburger-button:hover{
     justify-content: center;
 }
 
-.column{
-    text-align: center;
-}
-
-.column > * > *, .grid > * {
+.column > * > * {
     margin: 20px;
 }
 
@@ -168,6 +192,7 @@ nav > a:hover, button.hamburger-button:hover{
 .route-field{
     background-color: rgb(0, 132, 255);
     color: white;
+    margin: 15px;
     min-width: 60px;
     border-radius: 10px;
     display: flex;
@@ -180,6 +205,12 @@ nav > a:hover, button.hamburger-button:hover{
     text-align: center;
     padding: 5px;
     box-shadow: var(--shadow);
+}
+
+span.stop-unique{
+    border-radius: 50px;
+    border: 2px solid var(--dark-color);
+    padding: 5px;
 }
 
 input[type="text"]{
@@ -197,10 +228,6 @@ input[type="text"]{
     text-align: center;
     color: var(--dark-color);
     height: 50px;
-}
-
-button{
-    cursor: pointer;
 }
 
 button.content-button{
@@ -261,16 +288,19 @@ table.departures tr{
     cursor: pointer;
 }
 
-table.departures td{
-    padding: 10px 0;
-}
-
 tr.past-departure{
     filter: opacity(.3)
 }
 
 tr.next-departure{
     border-right: 3px solid var(--red);
+}
+
+/* Map */
+div#map{
+    width: 90vw;
+    height: 80vh;
+    border-radius: 25px;
 }
 
 /* Footer */
@@ -292,8 +322,11 @@ footer{
     }
 }
 
-@media screen and (max-width: 440px){
+@media screen and (max-width: 500px){
     h1{
         font-size: 25px;
+    }
+    .card{
+        flex-direction: column;
     }
 }

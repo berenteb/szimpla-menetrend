@@ -1,5 +1,5 @@
 <script src="/filterDepartures.js"></script>
-<h2><%= data.stop.stop_name %> megálló indulási idejei a mai napra:</h2>
+<h2><%= data.stop.stop_name %>  <% if(stop.unique !== 0){ %><span class="stop-unique"><%= stop.unique %></span><% } %> megálló indulási idejei a mai napra:</h2>
 <div class="column">
     <% if(data.fields.length === 0){ %> 
         <h2>Nincs információ</h2>

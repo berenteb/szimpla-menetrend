@@ -1,0 +1,51 @@
+<h2>Útvonal térképe</h2>
+<div id="map"></div>
+<script src="/maps.js"></script>
+<script>
+    function init() {
+        initMap(drawRouteAndStops);
+    }
+    function drawRouteAndStops() {
+        fetch(location.origin + "/api/shape/<%= data.trip.trip_id.replace('/','-') %>").then((data) => data.json()).then(parsed => {
+            if (Array.isArray(parsed.stops)) {
+                let markers = parsed.stops.map(stop => {
+                    const marker = new google.maps.Marker({
+                        position: { lat: stop.stop_lat, lng: stop.stop_lon },
+                        // label: stop.stop_name,
+                        icon: svgMarker,
+                        map: map,
+                        optimized: true,
+                        clickable: true
+                    });
+                    marker.addListener("click", () => {
+                        infoWindow.setContent(
+                            `<div class="align-center">
+                        <h2>${stop.stop_name} ${stop.unique === 0 ? "" : "<span class='stop-unique'>" + stop.unique + "</span>"}</h2>
+                        <a href="/stop/${stop.stop_id}">Megnyitás</a>
+                        </div>`)
+                        infoWindow.open(map, marker);
+                    })
+                    return marker;
+                })
+            }
+            if (Array.isArray(parsed.shapes)) {
+                let coordinates = parsed.shapes.map((shape_coord) => {
+                    return { lat: shape_coord.shape_pt_lat, lng: shape_coord.shape_pt_lon }
+                });
+                new google.maps.Polyline({
+                    path: coordinates,
+                    geodesic: true,
+                    strokeColor: "#<%= data.route.route_color %>",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 4,
+                    map: map
+                });
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+</script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFyhybPcWTumkfZuWDLWJZ0daGKhkzkQs&map_ids=7dffb7ad9170c9ae&callback=init&libraries=&v=weekly"
+    async></script>

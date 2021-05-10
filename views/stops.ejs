@@ -1,5 +1,6 @@
 <script src="/search.js"></script>
-<h2>Megállók:</h2>
+<h2>Megállók</h2>
+<button class="content-button animation1" onclick="location.href='/stop-map'">Megtekintés a térképen</button>
 <div class="column">
     <% if(data.stops.length === 0){ %> 
         <h2>Nincs információ</h2>
@@ -7,11 +8,14 @@
         <div class="flex-column">
             <input id="search-bar" type="text" placeholder="Keresés..." oninput="searchStops()">
         </div>
+        <div>
+            <p class="align-center">A <span class="stop-unique">...</span> jel megkülönbözteti az azonos nevű megállókat.</p>
+        </div>
         <div id="stop-list">
             <% data.stops.forEach((stop)=>{ %> 
                 <a class="stop-link" href="/stop/<%=stop.stop_id%>">
                 <div class="stop-field animation1">
-                    <h2><%=stop.stop_name %></h2>
+                    <h2><%=stop.stop_name %> <% if(stop.unique !== 0){ %><span class="stop-unique"><%= stop.unique %> </span><% } %></h2>
                 </div>
                 </a>
             <% }); %> 
