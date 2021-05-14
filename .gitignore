@@ -163,3 +163,4 @@ config.json
 db
 certs
 Logo.ai
+test.*
