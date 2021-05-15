@@ -1,4 +1,4 @@
-const feed = require("../parseFeedSzeged");
+const feed = require("../utils/parseFeedSzeged");
 module.exports = function () {
     return function(req, res, next) {
         feed.then(feed => {

@@ -1,8 +1,10 @@
-const { getShapes } = require("gtfs");
 const gtfs = require("gtfs");
 const config = require("./config.json");
 async function loadDB() {
-    const db = await gtfs.openDb(config);
+    await gtfs.openDb(config);
+}
+async function closeDB() {
+    await gtfs.closeDb();
 }
 async function getAgency(agency_id) {
     let agencies = await gtfs.getAgencies(agency_id ? { "agency_id": agency_id } : {});
@@ -129,6 +131,7 @@ async function getShapeForShapeID(shape_id) {
 }
 module.exports = {
     loadDB: loadDB,
+    closeDB: closeDB,
     getAgency: getAgency,
     getRoute: getRoute,
     getTrip: getTrip,
