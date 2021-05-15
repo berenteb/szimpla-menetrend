@@ -1,6 +1,5 @@
 const reader = require("rss-to-json");
 const fs = require("fs");
-const { resolve } = require("path");
 
 function isUpdateAvailable() {
     return new Promise((resolve, reject) => {
