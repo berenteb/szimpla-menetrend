@@ -1,6 +1,8 @@
 # Szimpla Menetrend (Simple Timetable)
 ![Version](https://img.shields.io/github/package-json/v/berenteb/szimpla-menetrend?style=flat-square) 
 A clean looking timetable / public transport web application for viewing bus, tram, trolleybus, train, etc. schedules and information. Based on GTFS.
+
+Try it out here: [Szimpla Menetrend](https://menetrend.berente.net)
 ## Setup
 There are several things to set up. This project is a bit specific for Szeged, Hungary, although it can be customized.
 ### Environmental variables
