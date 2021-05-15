@@ -1,10 +1,9 @@
 {
   "name": "szimpla-menetrend",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Bálint Berente",
   "license": "MIT",
   "dependencies": {
