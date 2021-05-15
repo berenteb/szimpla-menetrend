@@ -1,5 +1,5 @@
 const gtfs = require("gtfs");
-const config = require("./config.json")
+const config = require("../config.json")
 const fs = require("fs");
 async function run() {
     const db = await gtfs.openDb(config);
