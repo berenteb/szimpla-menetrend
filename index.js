@@ -11,8 +11,6 @@ const update = require("./utils/db_updater")
 const separator = require("./utils/separateStops")
 var is_update_running = false;
 
-gtfs.loadDB();
-
 app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.use(express.static("static"));
@@ -43,7 +41,11 @@ async function runUpdate() {
     if (updateAvailable) {
         is_update_running = true;
         console.log("Update available. Starting update.");
-        gtfs.closeDB();
+        try {
+            await gtfs.closeDB();
+        } catch (error) {
+            console.log("DB was not opened");
+        }
         update().then(() => {
             console.log("Update finished");
         }).catch(() => {
@@ -63,6 +65,7 @@ async function runUpdate() {
         console.log("No update available.");
     }
 }
-
-// schedule.scheduleJob("update", "*/3 * * * *", runUpdate);
+console.log("Scheduling auto updater for rule " + process.env.UPDATE_RULE);
+schedule.scheduleJob("update", process.env.UPDATE_RULE, runUpdate);
+gtfs.loadDB();
 runUpdate();

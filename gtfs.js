@@ -1,6 +1,5 @@
 const gtfs = require("gtfs");
 const config = require("./config.json");
-let db;
 async function loadDB() {
     await gtfs.openDb(config);
 }
