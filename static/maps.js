@@ -19,8 +19,8 @@ function initMap(callback) {
     infoWindow = new google.maps.InfoWindow();
     svgMarker = {
         path: "M 0,0 m -3,0 a 3,3 0 1,0 6, 0 a 3,3, 0 1,0 -6, 0",
-        fillColor: "#2978b5",
-        strokeColor: "#004577",
+        fillColor: "#FFFFFF",
+        strokeColor: "#000000",
         fillOpacity: 1,
         strokeWeight: 2,
         rotation: 0,
