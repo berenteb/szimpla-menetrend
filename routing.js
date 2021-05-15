@@ -18,6 +18,7 @@ const getShapeMW = require("./mw/getShapeMW");
 const renderMW = require("./mw/renderMW");
 const redirectMW = require("./mw/redirectMW");
 const getFeedMW = require("./mw/getFeedMW");
+const getLastUpdateMW = require("./mw/getLastUpdateMW");
 const separateStopsMW = require("./mw/separateStopsMW");
 const apiMW = require("./mw/apiMW");
 
@@ -99,6 +100,7 @@ module.exports = function (app) {
         getAgenciesMW(),
         getRoutesMW(),
         getFeedMW(),
+        getLastUpdateMW(),
         renderMW("routes")
     );
     app.get(
