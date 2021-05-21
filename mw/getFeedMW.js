@@ -1,7 +1,7 @@
 const feed = require("../utils/parseFeedSzeged");
 module.exports = function () {
     return function(req, res, next) {
-        feed.then(feed => {
+        feed().then(feed => {
             if (feed.length === 0) {
                 res.locals.feed = "Nem találtunk közleményt."
             } else {

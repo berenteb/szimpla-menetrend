@@ -34,4 +34,4 @@ function getFeed() {
     })
 }
 
-module.exports = getFeed();
+module.exports = getFeed;
