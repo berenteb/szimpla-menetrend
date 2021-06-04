@@ -23,10 +23,42 @@ function addStopMarkers() {
                 })
                 return marker;
             })
-            new MarkerClusterer(map, markers, {
-                imagePath:
-                    "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-            });
+            var clusterStyles = [
+                {
+                  textColor: 'black',
+                  url: '/clusters/m1.png',
+                  height: 40,
+                  width: 40,
+                  anchorText:[13,0]
+                },
+               {
+                  textColor: 'black',
+                  url: '/clusters/m2.png',
+                  height: 40,
+                  width: 40,
+                  anchorText:[13,0]
+                },
+               {
+                  textColor: 'black',
+                  url: '/clusters/m3.png',
+                  height: 40,
+                  width: 40,
+                  anchorText:[13,0]
+                },
+                {
+                    textColor: 'black',
+                    url: '/clusters/m4.png',
+                    height: 40,
+                    width: 40,
+                    anchorText:[13,0]
+                }
+            ];
+            var mcOptions = {
+                gridSize: 50,
+                styles: clusterStyles,
+                maxZoom: 15
+            };
+            new MarkerClusterer(map, markers, mcOptions);
         }
     }).catch(err => {
         console.log(err);

@@ -12,7 +12,6 @@ PORT=<your port>
 SSL=<true | false> 
 CERT_PATH=<path, i.e.: ./cert/cert.pem>
 KEY_PATH=<path, i.e.: ./cert/key.pem>
-GOOGLE_API_KEY=<API key, optional, needed for walking directions>
 UPDATE_RULE=<cron rule for checking DB updates via RSS feed. I.e.: "0 2 * * *">
 ```
 ### Config for GTFS
