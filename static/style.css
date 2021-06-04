@@ -27,10 +27,9 @@ a{
 
 a.external{
     text-decoration: underline;
-    margin: 10px;
 }
 
-h1, h2, h3, p{
+h1, h2, h3, p, a.external{
     margin: 10px;
 }
 
@@ -75,7 +74,7 @@ hr{
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    height: 100px;
+    height: 80px;
     background-color: var(--primary-color);
     color: var(--background-color);
 }
@@ -119,7 +118,7 @@ nav > a:hover, button.hamburger-button:hover{
 
 /* Content */
 .content{
-    min-height: calc(100vh - 100px - 100px);
+    min-height: calc(100vh - 80px - 80px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -162,7 +161,6 @@ nav > a:hover, button.hamburger-button:hover{
     border-radius: 20px;
     padding: 20px;
     margin: 20px;
-    border-radius: 50px;
     background: var(--background-color);
     box-shadow: var(--shadow);
 }
@@ -302,12 +300,11 @@ tr.next-departure{
 div#map{
     width: 90vw;
     height: 70vh;
-    border-radius: 25px;
 }
 
 /* Footer */
 footer{
-    height: 100px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
