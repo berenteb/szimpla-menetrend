@@ -15,8 +15,7 @@
             <table class="departures">
                 <% data.fields.forEach((field)=>{ %>
                     <tr <% if(field.timeline_position==="past-departure" ){%>hidden="true"<% } %> class="<%=
-                                field.timeline_position %>" onclick="location.href='/times-for-direction/
-                                <%=field.trip.trip_id.replace(` /`, `-`)%>/<%= data.stop.stop_id %> '">
+                                field.timeline_position %>" onclick="location.href='/times-for-direction/<%=field.trip.trip_id.replace(`/`, `-`)%>/<%= data.stop.stop_id %>'">
                                         <td>
                                             <div class="route-field"
                                                 style="background-color: #<%=field.route.route_color%>; color: #<%=field.route.route_text_color%>;">
