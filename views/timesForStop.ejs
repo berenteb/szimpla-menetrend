@@ -1,42 +1,31 @@
 <script src="/filterDepartures.js"></script>
 <h2>
-    <%= data.stop.stop_name %>
-    <% if(stop.unique !==0){ %>
-        <span class="stop-unique"><%= stop.unique %></span>
+    <%= data.stops[0].stop_name %>
+    <% if(data.stops[0].unique !==0){ %>
+        <span class="stop-unique"><%= data.stops[0].unique %></span>
     <% } %> megálló indulási idejei a mai napra:
 </h2>
-<% if(data.fields.length===0){ %>
+<% if(data.stops[0].fields.length===0){ %>
     <h2>Nincs információ</h2>
-    <% }else{ %>
-        <div class="flex-column">
+<% }else{ %>
+    <div class="flex-column">
             <button id="filter-button" class="content-button">Régiek megjelenítése</button>
         </div>
-        <div class="table-container">
-            <table class="departures">
-                <% data.fields.forEach((field)=>{ %>
-                    <tr <% if(field.timeline_position==="past-departure" ){%>hidden="true"<% } %> class="<%=
-                                field.timeline_position %>" onclick="location.href='/times-for-direction/<%=field.trip.trip_id.replace(`/`, `-`)%>/<%= data.stop.stop_id %>'">
-                                        <td>
-                                            <div class="route-field"
-                                                style="background-color: #<%=field.route.route_color%>; color: #<%=field.route.route_text_color%>;">
-                                                <h2>
-                                                    <%=field.route.route_short_name %>
-                                                </h2>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h2>
-                                                <%=field.trip.trip_headsign %>
-                                            </h2>
-                                        </td>
-                                        <td>
-                                            <h2>
-                                                <%= field.time.departure_time.split(":")[0] %>:<%=
-                                                        field.time.departure_time.split(":")[1] %>
-                                            </h2>
-                                        </td>
-                    </tr>
-                    <% }); %>
-            </table>
-        </div>
-        <% } %>
+    <div class="departure-group">
+        <% data.stops[0].fields.forEach((field)=>{ %>
+            <div class="departure-row <%=field.timeline_position %> <% if(field.timeline_position === "past-departure"){ %>hide<%}%>">
+            <div class="route-field" style="background-color: #<%=field.route.route_color%>; color: #<%=field.route.route_text_color%>;">
+                <h2>
+                    <%=field.route.route_short_name %>
+                </h2>
+            </div>
+            <h2 class="destination-field">
+                <%=field.trip.trip_headsign %>
+            </h2>
+            <h2 class="time-field">
+                <%= field.time.departure_time.split(":")[0] %>:<%=field.time.departure_time.split(":")[1] %>
+            </h2>
+            </div>
+        <% }); %>
+    </div>
+<% } %>
