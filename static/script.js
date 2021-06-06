@@ -10,7 +10,7 @@ function getLocation() {
             maximumAge: 0
         };
         navigator.geolocation.getCurrentPosition((pos) => {
-            location.href = `/nearest-stop?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`;
+            location.href = `/nearby?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`;
         }, (err) => {
             alert(err.message);
             location.href = "/stops/";

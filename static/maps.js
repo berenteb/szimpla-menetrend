@@ -3,9 +3,13 @@ var infoWindow;
 var clusters;
 var svgMarker;
 function initMap(callback) {
-    const city = { lat: 46.253, lng: 20.14824 };
+    let params = (new URL(document.location)).searchParams
+    let lat = params.get("lat");
+    let lon = params.get("lon");
+    const zoom = lat && lon ? 16 : 13;
+    const city = lat && lon ? { lat: parseFloat(lat), lng: parseFloat(lon) } : { lat: 46.253, lng: 20.14824 };
     map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 13,
+        zoom: zoom,
         center: city,
         mapId: "7dffb7ad9170c9ae",
         streetViewControl: false,
