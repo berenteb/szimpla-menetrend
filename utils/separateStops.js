@@ -2,7 +2,7 @@ const gtfs = require("gtfs");
 const fs = require("fs");
 function run() {
     return new Promise(async (resolve, reject) => {
-        console.log("Spearating stops");
+        console.log("Separating stops");
         let stops = await gtfs.getStops();
         let separated = {};
         for (let stop of stops) {

@@ -2,9 +2,9 @@ function toggleFilter(bool) {
     let rows = document.getElementsByClassName("past-departure");
     for (let row of rows) {
         if (bool) {
-            row.setAttribute("hidden", "true");
+            row.classList.add("hide");
         } else {
-            row.removeAttribute("hidden", "true");
+            row.classList.remove("hide");
         }
     }
     let button = document.getElementById("filter-button");
