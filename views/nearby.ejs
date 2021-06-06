@@ -1,0 +1,40 @@
+<h2>Közeli megállók</h2>
+<button class="content-button animation1" onclick="location.href='/stop-map?lat=<%= data.lat%>&lon=<%= data.lon%>'">Megtekintés a térképen</button>
+<div class="column">
+    <% if(data.stops.length===0){ %>
+        <h2>Nincs információ</h2>
+    <% }else{ %>
+            <% data.stops.forEach((stop)=>{ %>
+                <div class="departure-group centered-card">
+                    <a class="stop-link grid-full external" href="/stop/<%=stop.stop_id%>">
+                        <h2><%=stop.stop_name %>
+                            <% if(stop.unique !==0){ %>
+                                <span class="stop-unique">
+                                    <%= stop.unique %>
+                                </span>
+                            <% } %>
+                        </h2>
+                    </a>
+                    <% if(stop.fields.length> 0){ %>
+                        <% stop.fields.forEach((field)=>{ %>
+                            <div class="departure-row <%=field.timeline_position %>">
+                                <div class="route-field" style="background-color: #<%=field.route.route_color%>; color: #<%=field.route.route_text_color%>;">
+                                    <h2>
+                                        <%=field.route.route_short_name %>
+                                    </h2>
+                                </div>
+                                <h2 class="destination-field">
+                                    <%=field.trip.trip_headsign %>
+                                </h2>
+                                <h2 class="time-field">
+                                    <%= field.time.departure_time.split(":")[0] %>:<%=field.time.departure_time.split(":")[1] %>
+                                </h2>
+                            </div>
+                        <% }); %>
+                    <% }else{ %>
+                        <p class="grid-full"><i>Nincs indulás</i></p>
+                    <% } %>
+                </div>
+            <% }); %>
+    <% } %>
+</div>
