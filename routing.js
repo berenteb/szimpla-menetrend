@@ -103,6 +103,10 @@ module.exports = function (app) {
         renderMW("stopMap")
     )
     app.get(
+        "/faq",
+        renderMW("faq")
+    )
+    app.get(
         "/",
         getAgenciesMW(),
         getRoutesMW(),
