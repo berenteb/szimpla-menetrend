@@ -25,7 +25,7 @@ a{
     cursor: pointer;
 }
 
-a.external{
+a.external, a.underline{
     text-decoration: underline;
 }
 
@@ -191,6 +191,36 @@ nav > a:hover, button.hamburger-button:hover{
     margin: 20px;
     padding: 5px;
     box-shadow: var(--shadow);
+}
+
+ul.stop-list li{
+    position:relative;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
+
+ul.stop-list{
+    list-style-type: none;
+}
+
+ul.stop-list li::after{
+    content: url('/img/stop_dot.svg');
+    position: absolute;
+    left: -25px; /*adjust manually*/
+    top: 0px;
+}
+
+ul.stop-list li::before{
+    content:"";
+    position: absolute;
+    left: -17px; /* adjust manually */
+    border-left: 5px solid var(--dark-color);
+    height: 100%;
+    top: 10px;
+}
+
+ul.stop-list li:last-child::before{
+    border-left:none;
 }
 
 span.stop-unique{

@@ -1,27 +1,49 @@
 <div class="row">
     <div class="route-field" style="background-color: #<%=route.route_color%>; color: #<%=route.route_text_color%>;">
-        <h2><%=data.route.route_short_name %></h2>
+        <h2>
+            <%=data.route.route_short_name %>
+        </h2>
     </div>
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="44" height="44"
+        viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <line x1="5" y1="12" x2="19" y2="12" />
         <line x1="13" y1="18" x2="19" y2="12" />
         <line x1="13" y1="6" x2="19" y2="12" />
-      </svg>
-    <h2><%= data.trip.trip_headsign || "Útirány #"+(data.trip.direction_id+1)   %> </h2>
+    </svg>
+    <h2>
+        <%= data.trip.trip_headsign || "Útirány #" +(data.trip.direction_id+1) %>
+    </h2>
 </div>
 <h2>Megállók</h2>
-<button class="content-button animation1" onclick="location.href='/trip-map/<%= data.trip.trip_id.replace('/', '-')%>'">Megtekintés a térképen</button>
+<button class="content-button animation1"
+    onclick="location.href='/trip-map/<%= data.trip.trip_id.replace('/', '-')%>'">Megtekintés a térképen</button>
 <div class="column">
-    <% if(data.stops.length === 0){ %> 
+    <% if(data.stops.length===0){ %>
         <h2>Nincs információ</h2>
-    <% }else{ %> 
-        <% data.stops.forEach((stop)=>{ %> 
-            <a href="/times-for-direction/<%= data.trip_id%>/<%=stop.stop_id%>">
-                <div class="stop-field animation1">
-                    <h3><%=stop.stop_name %> <% if(stop.unique !== 0){ %><span class="stop-unique"><%= stop.unique %></span><% } %></h3>
-                </div>
-            </a>
-        <% }); %> 
-    <% } %> 
+        <% }else{ %>
+            <ul class="stop-list">
+                <% data.stops.forEach((stop)=>{ %>
+                    <% if(route.route_color){ %>
+                        <style>
+                            ul.stop-list li::before {
+                                border-left: 5px solid #<%= route.route_color%>;
+                            }
+                        </style>
+                    <% } %> 
+                    <li>
+                        <a class="underline" href="/times-for-direction/<%= data.trip_id%>/<%=stop.stop_id%>">
+                            <div>
+                                <h3>
+                                    <%=stop.stop_name %>
+                                    <% if(stop.unique !==0){ %>
+                                        <span class="stop-unique"><%= stop.unique %></span>
+                                    <% } %>
+                                </h3>
+                            </div>
+                        </a>
+                    </li>
+                    <% }); %>
+            </ul>
+            <% } %>
 </div>
