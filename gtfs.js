@@ -100,7 +100,7 @@ async function isActiveToday(service_id) {
     });
     if (calendars.length === 0) return true;
     if (exceptions.length > 0) {
-        console.log("Exception found")
+        console.log("Service exception found")
         return exceptions[0].exception_type === 1;
     } else {
         let calendar = calendars[0];
