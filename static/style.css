@@ -283,6 +283,7 @@ div.flex-column{
     grid-template-columns: 100px auto 100px;
     grid-gap: 5px;
     align-items: center;
+    cursor: pointer;
 }
 
 .grid-full{

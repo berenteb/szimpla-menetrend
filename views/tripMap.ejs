@@ -6,7 +6,7 @@
         initMap(drawRouteAndStops);
     }
     function drawRouteAndStops() {
-        fetch(location.origin + "/api/shape/<%= data.trip.trip_id.replace('/','-') %>").then((data) => data.json()).then(parsed => {
+        fetch(location.origin + "/api/shape/<%= data.trips[0].trip_id.replace('/','-') %>").then((data) => data.json()).then(parsed => {
             if (Array.isArray(parsed.stops)) {
                 let markers = parsed.stops.map(stop => {
                     const marker = new google.maps.Marker({
