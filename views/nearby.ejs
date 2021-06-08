@@ -17,7 +17,7 @@
                     </a>
                     <% if(stop.fields.length> 0){ %>
                         <% stop.fields.forEach((field)=>{ %>
-                            <div class="departure-row <%=field.timeline_position %>">
+                            <div class="departure-row <%=field.timeline_position %>" onclick="location.href='/trip/<%= field.trip.trip_id.replace(`/`,`-`)%>'">
                                 <div class="route-field" style="background-color: #<%=field.route.route_color%>; color: #<%=field.route.route_text_color%>;">
                                     <h2>
                                         <%=field.route.route_short_name %>

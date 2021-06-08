@@ -13,7 +13,7 @@
         </div>
     <div class="departure-group">
         <% data.stops[0].fields.forEach((field)=>{ %>
-            <div class="departure-row <%=field.timeline_position %> <% if(field.timeline_position === "past-departure"){ %>hide<%}%>">
+            <div class="departure-row <%=field.timeline_position %> <% if(field.timeline_position === "past-departure"){ %>hide<%}%>"  onclick="location.href='/trip/<%= field.trip.trip_id.replace(`/`,`-`)%>'">
             <div class="route-field" style="background-color: #<%=field.route.route_color%>; color: #<%=field.route.route_text_color%>;">
                 <h2>
                     <%=field.route.route_short_name %>

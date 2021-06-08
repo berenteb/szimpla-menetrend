@@ -10,6 +10,7 @@ const getTripsForServiceMW = require("./mw/getTripsForServiceMW");
 const getDirectionsForRouteMW = require("./mw/getDirectionsForRouteMW");
 const getStopsForDirectionMW = require("./mw/getStopsForDirectionMW");
 const getTimesForDirectionMW = require("./mw/getTimesForDirectionMW");
+const getTimesForTripStopsMW = require("./mw/getTimesForTripStopsMW");
 const getTimesForStopMW = require("./mw/getTimesForStopMW");
 const getTimesForTripMW = require("./mw/getTimesForTripMW");
 const getTimetableForDirectionMW = require("./mw/getTimetableForDirectionMW");
@@ -92,6 +93,16 @@ module.exports = function (app) {
         getDirectionsForRouteMW(),
         renderMW("directionsForRoute")
     );
+    app.get(
+        "/trip/:trip_id",
+        getTripMW(),
+        getRouteMW(),
+        getStopsForDirectionMW(),
+        getTimesForTripMW(),
+        getTimesForTripStopsMW(),
+        separateStopsMW(__dirname),
+        renderMW("trip")
+    )
     app.get(
         "/trip-map/:trip_id",
         getTripMW(),

@@ -8,12 +8,12 @@
         <line x1="13" y1="18" x2="19" y2="12" />
         <line x1="13" y1="6" x2="19" y2="12" />
       </svg>
-    <h2><%= data.trip.trip_headsign || "Útirány #"+(data.trip.direction_id+1)  %> </h2>
+    <h2><%= data.trips[0].trip_headsign || "Útirány #"+(data.trips[0].direction_id+1)  %> </h2>
 </div>
 <% if(data.timetable.length > 0){ %>
     <h2><%= data.nextText %> </h2>
 <% } %> 
-<h2><a class="external" href="/stop/<%= data.stops[0].stop_id %> "><%= data.stops[0].stop_name %> <% if(data.stops[0].unique !== 0){ %><span class="stop-unique"><%= data.stops[0].unique %></span><% } %></a> megálló indulási idejei a mai napra:</h2>
+<h2><a class="underline" href="/stop/<%= data.stops[0].stop_id %> "><%= data.stops[0].stop_name %><% if(data.stops[0].unique !== 0){ %> <span class="stop-unique"><%= data.stops[0].unique %></span><% } %></a> megálló indulási idejei a mai napra:</h2>
 <div class="table-container">
     <% if(data.timetable.length === 0){ %> 
         <h2>Nincs információ</h2>

@@ -6,7 +6,6 @@ module.exports = function (fieldnames) {
                 result[name] = res.locals[name];
             }
             res.send(JSON.stringify(result));
-
         } else {
             res.send(JSON.stringify(res.locals[fieldnames]));
         }
