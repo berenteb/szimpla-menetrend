@@ -166,7 +166,7 @@ nav > a:hover, button.hamburger-button:hover{
     box-shadow: var(--shadow);
 }
 
-.align-center{
+.align-center, .centered-card{
     text-align: center;
 }
 
